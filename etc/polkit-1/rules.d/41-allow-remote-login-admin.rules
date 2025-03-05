@@ -1,0 +1,8 @@
+polkit.addRule(function(action, subject) {
+    if (action.id === "org.gnome.controlcenter.remote-session-helper") {
+        if (subject.user === "your-user-name") {
+            return polkit.Result.AUTH_ADMIN_KEEP;
+        }
+    }
+});
+

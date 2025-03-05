@@ -1,0 +1,9 @@
+polkit.addRule(function(action, subject) {
+    if (action.id === "org.gnome.controlcenter.user-accounts.administration") {
+        polkit.log("Polkit check for user accounts admin - user: " + subject.user + " is remote: " + !subject.active);
+        if (subject.user === "your-user-name") {
+            return polkit.Result.AUTH_ADMIN_KEEP;
+        }
+    }
+});
+
